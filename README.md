@@ -29,3 +29,40 @@ All endpoints require Bearer token:
 1. **Install Rust and Diesel CLI**
    ```bash
    cargo install diesel_cli --no-default-features --features postgres
+
+
+Authorization: Bearer my_secret_token_123
+
+Create .env in core project
+
+DATABASE_URL=postgres://postgres:PASSWORD@localhost/DB_NAME
+SERVER_HOST=127.0.0.1
+SERVER_PORT=8080
+LOG_LEVEL=debug
+
+RUN MIGRATIONS
+diesel migration run
+
+RUN SERVER 
+
+cargo run
+
+
+API usage examples
+
+Get all users
+
+curl -i -H "Authorization: Bearer my_secret_token_123" http://localhost:8080/users
+
+Create user
+
+curl -i -X PUT http://localhost:8080/users/1 ^
+  -H "Authorization: Bearer my_secret_token_123" ^
+  -H "Content-Type: application/json" ^
+  -d "{\"username\": \"JaneDoe\", \"email\": \"jane@example.com\"}"
+ 
+
+Delete user
+
+curl -i -X DELETE http://localhost:8080/users/1 ^
+  -H "Authorization: Bearer my_secret_token_123"
