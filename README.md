@@ -31,38 +31,46 @@ All endpoints require Bearer token:
    cargo install diesel_cli --no-default-features --features postgres
 
 
+  ```bash
 Authorization: Bearer my_secret_token_123
+```
 
-Create .env in core project
-
+## Create .env in core project
+  ```bash
 DATABASE_URL=postgres://postgres:PASSWORD@localhost/DB_NAME
 SERVER_HOST=127.0.0.1
 SERVER_PORT=8080
 LOG_LEVEL=debug
+```
 
-RUN MIGRATIONS
+
+## RUN MIGRATIONS
+  ```bash
 diesel migration run
+```
 
-RUN SERVER 
-
+## RUN SERVER 
+  ```bash
 cargo run
+```
 
+## API usage examples
 
-API usage examples
-
-Get all users
-
+## Get all users
+  ```bash
 curl -i -H "Authorization: Bearer my_secret_token_123" http://localhost:8080/users
+```
 
-Create user
-
+## Create user
+  ```bash
 curl -i -X PUT http://localhost:8080/users/1 ^
   -H "Authorization: Bearer my_secret_token_123" ^
   -H "Content-Type: application/json" ^
   -d "{\"username\": \"JaneDoe\", \"email\": \"jane@example.com\"}"
- 
+ ```
 
-Delete user
-
+## Delete user
+  ```bash
 curl -i -X DELETE http://localhost:8080/users/1 ^
   -H "Authorization: Bearer my_secret_token_123"
+```
