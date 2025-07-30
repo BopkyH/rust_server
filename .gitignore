@@ -1,0 +1,16 @@
+# Rust
+/target/
+**/*.rs.bk
+
+# IntelliJ, VS Code, JetBrains, etc
+.idea/
+.vscode/
+*.iml
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Env & credentials
+.env
+*.env
